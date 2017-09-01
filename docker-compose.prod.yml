@@ -13,11 +13,15 @@ services:
         CI_REGISTRY_IMAGE: ${CI_REGISTRY_IMAGE}
     image: ${APP_PROD_IMAGE:-acme101/lemp-starter:develop}
     environment:
+      PORT: 3000
       VIRTUAL_HOST: ${APP_PROD_VIRTUAL_HOST:-lemp.acme.dev, ~^lemp\..*\.xip\.io}
+      VIRTUAL_PORT: 3000
       HTTPS_METHOD: noredirect # support both http and https
     env_file:
       - .env-common
       - .env-prod
+    ports:
+      - "3000"
     depends_on:
       - db-dev
     links:

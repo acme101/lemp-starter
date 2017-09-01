@@ -24,4 +24,4 @@ ADD nginx $APP/nginx/
 
 ADD src /var/www/html/
 
-CMD ["sh", "run-prod.sh"]
+CMD ["sh", "/opt/app/run-prod.sh"]
